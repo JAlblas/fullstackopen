@@ -13,5 +13,5 @@
         server-->>browser: The server sends a 201 response with the message: {"message":"note created"}
         deactivate server
 
-        Note right of browser: The browser renders the updated list of notes
+        Note right of browser: The JS pushes the new note to a lit. The browser renders the updated list of notes
 ```
