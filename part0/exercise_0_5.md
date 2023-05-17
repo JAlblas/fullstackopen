@@ -35,7 +35,7 @@
         server-->>browser: [{"content":"buzz sasha mochi <3","date":"2023-05-17T10:22:17.669Z"}, ... ]
         deactivate server
 
-        Note right of browser: The browser executes the callback function that renders the notes
+        Note right of browser: The browser executes the callback function, that sets a notes variable and renders the notes
 
         browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/favicon.ico
         activate server
