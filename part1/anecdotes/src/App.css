@@ -15,11 +15,15 @@ body {
     width: 50%;
     top: 25%;
     left: 25%;
-    height: 50%;
+    height: 500px;
     position: absolute;
     text-align: center;
     font-size: 2em;
     padding: 25px;
+}
+
+#quote-div p:first-child {
+    height: 50%;
 }
 
 #quote-div button {
@@ -28,8 +32,17 @@ body {
     background-color: #FFF;
     border: 1px solid #EFEFEF;
     color: #000;
+    margin-left: 5px;
+    /*
     position: absolute;
     left: 40%;
     width: 20%;
     bottom: 10%;
+    */
+    border-radius: 5px;
+}
+
+.votes {
+    margin-top: 15px;
+    font-size: 0.5em;
 }
