@@ -6,15 +6,11 @@ const Button = ({ text, handleClick }) => {
 
 const Statistics = ({ good, neutral, bad }) => {
   const total = good + neutral + bad;
-  let average = 0
-  let percentageGood = 0
-  if (total != 0) {
-    average = (good - bad) / total;
-    percentageGood = good / total;
-  } else {
-    average = 0
-    percentageGood = 0
-  }
+
+  if (total === 0) return <p>No feedback given</p>
+
+  const average = (good - bad) / total;
+  const percentageGood = good / total;
 
   return (
     <div>
