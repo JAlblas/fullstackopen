@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FF4501;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+#quote-div {
+    margin: 0 auto;
+    width: 50%;
+    top: 25%;
+    left: 25%;
+    height: 50%;
+    position: absolute;
+    text-align: center;
+    font-size: 2em;
+    padding: 25px;
+}
+
+#quote-div button {
+    margin-top: 2em;
+    padding: 10px;
+    background-color: #FFF;
+    border: 1px solid #EFEFEF;
+    color: #000;
+    position: absolute;
+    left: 40%;
+    width: 20%;
+    bottom: 10%;
+}

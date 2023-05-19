@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import './App.css';
+
 const Button = ({ text, handleClick }) => {
   return (
     <button onClick={handleClick}>{text}</button>
@@ -26,7 +28,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div id="quote-div">
       <p>{anecdotes[selected]}</p>
       <Button
         text="Next anecdote"
