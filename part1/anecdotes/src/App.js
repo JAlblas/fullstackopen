@@ -35,14 +35,16 @@ const App = () => {
   }
 
   const addVote = (index) => {
-    console.log("VOTE!")
     const copy = { ...votes };
     copy[index] += 1;
     setVotes(copy);
   }
 
+  const maxIndex = Object.keys(votes).reduce((a, b) => votes[a] > votes[b] ? a : b);
+
   return (
     <div id="quote-div">
+      <h2>Anecdote of the day</h2>
       <p>{anecdotes[selected]}</p>
       <VoteCount votes={votes[selected]}></VoteCount>
       <Button
@@ -53,6 +55,9 @@ const App = () => {
         text="Next anecdote"
         handleClick={() => showNextAnecDote()}>
       </Button>
+
+      <h2>Anecdote with most votes</h2>
+      <p>{anecdotes[maxIndex]}</p>
     </div >
   )
 }

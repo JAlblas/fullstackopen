@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #FF4501;
+    background-color: #f33a07;
     color: #FFF;
     font-family: 'Roboto', sans-serif;
 }
@@ -18,12 +18,16 @@ body {
     height: 500px;
     position: absolute;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     padding: 25px;
 }
 
 #quote-div p:first-child {
     height: 50%;
+}
+
+#quote-div h2 {
+    margin-bottom: 10px;
 }
 
 #quote-div button {
@@ -33,16 +37,12 @@ body {
     border: 1px solid #EFEFEF;
     color: #000;
     margin-left: 5px;
-    /*
-    position: absolute;
-    left: 40%;
-    width: 20%;
-    bottom: 10%;
-    */
+    margin-bottom: 25px;
     border-radius: 5px;
+    width: 125px;
 }
 
 .votes {
     margin-top: 15px;
-    font-size: 0.5em;
+    font-size: 0.8em;
 }
