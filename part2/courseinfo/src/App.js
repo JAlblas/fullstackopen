@@ -16,7 +16,7 @@ const Content = ({ parts }) => {
     return (
         <div>
             {parts.map(
-                part => { return (<Part name={part.name} exercises={part.exercises} />) }
+                part => { return (<Part name={part.name} exercises={part.exercises} key={part.id} />) }
             )}
         </div>
     )
@@ -90,7 +90,7 @@ const App = () => {
             }
         ]
     }
-    const exercisesNumber = course.parts.reduce((sum, part) => (sum + part.exercises), 0)
+    const exercisesNumber = course.parts.reduce((sum, part) => sum + part.exercises, 0)
 
     return <Course course={course} exercisesNumber={exercisesNumber} />
 }
