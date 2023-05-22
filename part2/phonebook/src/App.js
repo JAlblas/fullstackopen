@@ -3,12 +3,21 @@ import Person from './components/Person'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
+    { name: 'Arto Hellas', number: '040-123456', id: 1 },
+    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
   ])
   const [newName, setNewName] = useState('')
+  const [newNumber, setNewNumber] = useState('')
+  const [filter, setFilter] = useState('')
 
   const updateName = (event) => {
     setNewName(event.target.value);
+  }
+
+  const updateNumber = (event) => {
+    setNewNumber(event.target.value);
   }
 
   const addPerson = (event) => {
@@ -21,19 +30,33 @@ const App = () => {
       name: newName
     }
 
-
     setPersons(persons.concat(personObject));
     setNewName('');
-
+    setNewNumber('');
 
   }
+
+  const updateFilter = (event) => {
+    setFilter(event.target.value)
+  }
+
+  const personsToShow = filter.length === 0
+    ? persons
+    : persons.filter(person => person.name === filter)
 
   return (
     <div>
       <h2>Phonebook</h2>
+      <p>Filter persons by name</p>
+      <input onChange={updateFilter}></input>
+
+      <h2>Add a new</h2>
       <form onSubmit={addPerson}>
         <div>
-          name: <input value={newName} onChange={updateName} />
+          Name: <input value={newName} onChange={updateName} />
+          <br></br>
+          Number: <input value={newNumber} onChange={updateNumber} />
+          <br></br>
         </div>
         <div>
           <button type="submit">add</button>
@@ -43,7 +66,7 @@ const App = () => {
       <div id="phonebook">
         <ul>
           {
-            persons.map((person) =>
+            personsToShow.map((person) =>
               <Person person={person} key={person.name} />
             )
           }
