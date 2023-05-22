@@ -42,7 +42,7 @@ const App = () => {
 
   const personsToShow = filter.length === 0
     ? persons
-    : persons.filter(person => person.name === filter)
+    : persons.filter(person => person.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0)
 
   return (
     <div>
