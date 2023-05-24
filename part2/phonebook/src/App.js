@@ -24,14 +24,6 @@ const App = () => {
       })
   }, [])
 
-  const updateName = (event) => {
-    setNewName(event.target.value);
-  }
-
-  const updateNumber = (event) => {
-    setNewNumber(event.target.value);
-  }
-
   const addPerson = (event) => {
     event.preventDefault()
     if (persons.some((person) => person.name === newName)) {
@@ -52,8 +44,22 @@ const App = () => {
   }
 
   const deletePerson = (id) => {
-    console.log("DELETE")
-    console.log(id)
+    personService.remove(id)
+      .then(data => {
+        console.log("DELETING")
+        console.log(id)
+        console.log(data)
+        setPersons(persons.filter((person) => person.id !== id))
+      })
+
+  }
+
+  const updateName = (event) => {
+    setNewName(event.target.value);
+  }
+
+  const updateNumber = (event) => {
+    setNewNumber(event.target.value);
   }
 
   const updateFilter = (event) => {
