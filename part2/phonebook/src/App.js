@@ -8,6 +8,8 @@ import PersonList from './components/PersonList'
 
 import axios from 'axios'
 
+import './App.css';
+
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
@@ -49,6 +51,11 @@ const App = () => {
       })
   }
 
+  const deletePerson = (id) => {
+    console.log("DELETE")
+    console.log(id)
+  }
+
   const updateFilter = (event) => {
     setFilter(event.target.value)
   }
@@ -68,7 +75,7 @@ const App = () => {
         addPerson={addPerson} />
 
       <h2>Numbers</h2>
-      <PersonList personsToShow={personsToShow} />
+      <PersonList personsToShow={personsToShow} deletePerson={deletePerson} />
 
     </div>
   )

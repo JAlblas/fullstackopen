@@ -1,13 +1,13 @@
 import Person from "./Person"
 
 
-const PersonList = ({ personsToShow }) => {
+const PersonList = ({ personsToShow, deletePerson }) => {
     return (
         <div id="phonebook">
             <ul>
                 {
                     personsToShow.map((person) =>
-                        <Person person={person} key={person.name} />
+                        <Person person={person} key={person.name} deletePerson={deletePerson} />
                     )
                 }
             </ul>
