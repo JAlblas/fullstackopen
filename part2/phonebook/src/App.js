@@ -67,6 +67,12 @@ const App = () => {
         setNewName('');
         setNewNumber('');
       })
+      .catch(error => {
+        alert(
+          `the person '${person.name}' does not exist on the server`
+        )
+        setPersons(persons.filter(person => person.id !== id))
+      })
   }
 
   const updateName = (event) => {
