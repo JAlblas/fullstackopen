@@ -9,6 +9,9 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <div>
       <h2>Statistics</h2>
+      <p>good: {good}</p>
+      <p>neutral: {neutral}</p>
+      <p>bad: {bad}</p>
       <p>total: {total}</p>
       <p>average: {average.toFixed(2)}</p>
       <p>positive: {percentageGood.toFixed(2)}%</p>
@@ -32,9 +35,6 @@ const App = () => {
       <button onClick={handleGood}>good</button>
       <button onClick={handleNeutral}>neutral</button>
       <button onClick={handleBad}>bad</button>
-      <p>good: {good}</p>
-      <p>neutral: {neutral}</p>
-      <p>bad: {bad}</p>
       <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
