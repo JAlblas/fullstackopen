@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #f33a07;
+    background-color: #1F4172;
     color: #FFF;
     font-family: 'Roboto', sans-serif;
 }
@@ -35,7 +35,7 @@ body {
     padding: 10px;
     background-color: #FFF;
     border: 1px solid #EFEFEF;
-    color: #000;
+    color: #1F4172;
     margin-left: 5px;
     margin-bottom: 25px;
     border-radius: 5px;
@@ -45,4 +45,8 @@ body {
 .votes {
     margin-top: 15px;
     font-size: 0.8em;
+}
+
+.quote {
+    font-size: 1.2em;
 }
