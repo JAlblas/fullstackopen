@@ -1,4 +1,17 @@
 import { useState } from 'react'
+import './App.css'
+
+const Button = ({ text, handleClick }) => {
+  return (
+    <button onClick={handleClick}>{text}</button>
+  )
+}
+
+const VoteCount = ({ votes }) => {
+  return (
+    <p className='votes'>Has {votes} votes</p>
+  )
+}
 
 const App = () => {
   const anecdotes = [
@@ -13,19 +26,38 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState({ 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 });
 
   const selectNewAnecdote = () => {
     const randomIndex = Math.floor(Math.random() * anecdotes.length)
     setSelected(randomIndex)
   }
 
+  const addVote = (index) => {
+    const copy = { ...votes };
+    copy[index] += 1;
+    setVotes(copy);
+  }
+
+  const maxVotesIndex = Object.keys(votes).reduce((a, b) => votes[a] > votes[b] ? a : b);
+
   return (
-    <div>
-      {anecdotes[selected]}
-      <br />
-      <br />
-      <button onClick={selectNewAnecdote}>Next Ancecdote</button>
-    </div>
+    <div id="quote-div">
+      <h2>Anecdote of the day</h2>
+      <p className="quote"><i>{anecdotes[selected]}</i></p>
+      <VoteCount votes={votes[selected]}></VoteCount>
+      <Button
+        text="Vote"
+        handleClick={() => addVote(selected)}>
+      </Button>
+      <Button
+        text="Next anecdote"
+        handleClick={() => selectNewAnecdote()}>
+      </Button>
+
+      <h2>Anecdote with most votes ({votes[maxVotesIndex]})</h2>
+      <p className="quote"><i>{anecdotes[maxVotesIndex]}</i></p>
+    </div >
   )
 }
 
