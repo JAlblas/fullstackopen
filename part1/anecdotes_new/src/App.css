@@ -1,3 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1F4172;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+#quote-div {
+    margin: 0 auto;
+    width: 50%;
+    top: 25%;
+    left: 25%;
+    height: 500px;
+    position: absolute;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 25px;
+}
+
+#quote-div p:first-child {
+    height: 50%;
+}
+
+#quote-div h2 {
+    margin-bottom: 10px;
+}
+
+#quote-div button {
+    margin-top: 2em;
+    padding: 10px;
+    background-color: #FFF;
+    border: 1px solid #EFEFEF;
+    color: #1F4172;
+    margin-left: 5px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    width: 125px;
+}
+
+.votes {
+    margin-top: 15px;
+    font-size: 0.8em;
+}
+
 .quote {
     font-size: 1.2em;
 }
