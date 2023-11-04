@@ -1,7 +1,16 @@
 import { useState } from 'react'
 
-const Statistics = ({ good, neutral, bad }) => {
+const Button = () => {
 
+}
+
+const StatisticsLine = ({ text, statistic }) => {
+  return (
+    <p>{text}: {statistic}</p>
+  )
+}
+
+const Statistics = ({ good, neutral, bad }) => {
   const total = good + neutral + bad;
   const average = (good - bad) / total;
   const percentageGood = (good / total) * 100;
@@ -11,10 +20,12 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <div>
       <h2>Statistics</h2>
-      <p>good: {good}</p>
-      <p>neutral: {neutral}</p>
-      <p>bad: {bad}</p>
-      <p>total: {total}</p>
+      <StatisticsLine text={"good"} statistic={good} />
+      <StatisticsLine text={"neutral"} statistic={neutral} />
+      <StatisticsLine text={"bad"} statistic={bad} />
+      <StatisticsLine text={"total"} statistic={total} />
+      <StatisticsLine text={"average"} statistic={average.toFixed(2)} />
+      <StatisticsLine text={"positive"} statistic={percentageGood.toFixed(2)} />
       <p>average: {average.toFixed(2)}</p>
       <p>positive: {percentageGood.toFixed(2)}%</p>
     </div>
