@@ -1,7 +1,7 @@
 const Persons = ({ personsToShow }) => {
     return (
         <div>
-            {personsToShow.map(person => <p key={person.name}>{person.name}</p>)}
+            {personsToShow.map(person => <p key={person.name}>{person.name} - {person.number}</p>)}
         </div>
     )
 }

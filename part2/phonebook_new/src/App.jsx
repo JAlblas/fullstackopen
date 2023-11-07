@@ -19,6 +19,27 @@ const App = () => {
       })
   }, [])
 
+  const addPerson = (event) => {
+    event.preventDefault()
+    if (persons.some(person => person.name.toLowerCase() === newName.toLowerCase())) {
+      alert(`${newName} is already added to phonebook`)
+      return
+    } else {
+      const personObject = {
+        id: persons.length + 1,
+        name: newName,
+        number: newNumber
+      }
+
+      axios.post('http://localhost:3001/persons', personObject)
+        .then(response => {
+          setPersons(persons.concat(response.data))
+          setNewName('')
+          setNewNumber('')
+        })
+    }
+  }
+
   const personsToShow = filter.length === 0
     ? persons
     : persons.filter(person => person.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0)
@@ -33,24 +54,6 @@ const App = () => {
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value)
-  }
-
-  const addPerson = (event) => {
-    event.preventDefault()
-    if (persons.some(person => person.name.toLowerCase() === newName.toLowerCase())) {
-      alert(`${newName} is already added to phonebook`)
-      return
-    } else {
-      const personObject = {
-        id: persons.length + 1,
-        name: newName,
-        number: newNumber
-      }
-
-      setPersons(persons.concat(personObject))
-      setNewName('')
-      setNewNumber('')
-    }
   }
 
   return (
