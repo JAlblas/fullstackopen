@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
 import personService from './services/persons'
 
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
-import Persons from './components/Persons'
+import PersonList from './components/PersonList'
 import './App.css'
 
 const App = () => {
@@ -42,6 +41,16 @@ const App = () => {
     }
   }
 
+  const deletePerson = (id) => {
+    const person = persons.find(person => person.id === id)
+    if (confirm(`Are you sure you want to remove ${person.name}?`)) {
+      personService.remove(id)
+        .then(returnedPerson => {
+          setPersons(persons.filter((person) => person.id !== id))
+        })
+    }
+  }
+
   const personsToShow = filter.length === 0
     ? persons
     : persons.filter(person => person.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0)
@@ -68,7 +77,7 @@ const App = () => {
         newNumber={newNumber} handleNumberChange={handleNumberChange} />
 
       <h3>Numbers</h3>
-      <Persons personsToShow={personsToShow} />
+      <PersonList personsToShow={personsToShow} deletePerson={deletePerson} />
     </div>
   )
 }
