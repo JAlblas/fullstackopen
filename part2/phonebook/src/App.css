@@ -1,8 +1,30 @@
-button.delete {
-  padding: 2px;
-  margin-left: 15px;
-  border-radius: 3px;
-  background-color: brown;
-  color: #FFF;
-  font-size: 12px;
+body {
+    background-color: cadetblue;
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#phonebook {
+    margin: auto;
+    width: 50%;
+    border: 2px solid rgb(12, 73, 82);
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #FFF;
+    padding: 25px;
+}
+
+h3 {
+    margin-top: 25px;
+}
+
+input {
+    margin: 5px 0px;
+}
+
+button {
+    margin-left: 10px;
+    padding: 2px 5px;
+    background-color: cadetblue;
+    color: white;
 }

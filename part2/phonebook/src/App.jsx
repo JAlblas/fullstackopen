@@ -31,7 +31,6 @@ const App = () => {
       } else {
         return
       }
-
     } else {
       // Person does not exist
       const personObject = {
