@@ -26,6 +26,6 @@ const remove = (id) => {
 export default {
     getAll,
     create,
-    //update
+    update,
     remove
 }

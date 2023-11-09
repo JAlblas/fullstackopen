@@ -23,9 +23,17 @@ const App = () => {
   const addPerson = (event) => {
     event.preventDefault()
     if (persons.some(person => person.name.toLowerCase() === newName.toLowerCase())) {
-      alert(`${newName} is already added to phonebook`)
-      return
+      if (confirm(`${newName} is already added to phonebook, replace the old number with the new number?`)) {
+
+        const personToUpdate = persons.find(person => person.name === newName)
+        updatePerson(personToUpdate.id)
+
+      } else {
+        return
+      }
+
     } else {
+      // Person does not exist
       const personObject = {
         id: persons.length + 1,
         name: newName,
@@ -39,6 +47,27 @@ const App = () => {
           setNewNumber('')
         })
     }
+  }
+
+  const updatePerson = (id) => {
+    const person = persons.find(person => person.id === id)
+    const changedPerson = {
+      ...person, number: newNumber
+    }
+
+    personService
+      .update(id, changedPerson)
+      .then(returnedPerson => {
+        setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
+        setNewName('');
+        setNewNumber('');
+      })
+      .catch(error => {
+        alert(
+          `the person '${person.name}' does not exist on the server`
+        )
+        setPersons(persons.filter(person => person.id !== id))
+      })
   }
 
   const deletePerson = (id) => {
