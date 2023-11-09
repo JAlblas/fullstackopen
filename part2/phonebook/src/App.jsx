@@ -5,6 +5,8 @@ import personService from './services/persons'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import PersonList from './components/PersonList'
+import Notification from './components/Notification'
+
 import './App.css'
 
 const App = () => {
@@ -12,11 +14,20 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     personService.getAll()
       .then(persons => {
         setPersons(persons)
+      })
+      .catch(error => {
+        setErrorMessage(
+          `Notes can not be fetched`
+        )
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 5000)
       })
   }, [])
 
@@ -45,6 +56,15 @@ const App = () => {
           setNewName('')
           setNewNumber('')
         })
+        .catch(error => {
+          setErrorMessage(
+            `Person '${newName}' could not be added.`
+          )
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 5000)
+          setNotes(notes.filter(n => n.id !== id))
+        })
     }
   }
 
@@ -62,9 +82,13 @@ const App = () => {
         setNewNumber('');
       })
       .catch(error => {
-        alert(
-          `the person '${person.name}' does not exist on the server`
+        setErrorMessage(
+          `The person '${person.name}' does not exist on the server`
         )
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 5000)
+
         setPersons(persons.filter(person => person.id !== id))
       })
   }
@@ -75,6 +99,15 @@ const App = () => {
       personService.remove(id)
         .then(returnedPerson => {
           setPersons(persons.filter((person) => person.id !== id))
+        })
+        .catch(error => {
+          setErrorMessage(
+            `Person '${person.name}' was already removed from server`
+          )
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 5000)
+          setNotes(notes.filter(n => n.id !== id))
         })
     }
   }
@@ -97,12 +130,15 @@ const App = () => {
 
   return (
     <div id="phonebook">
-      <h2>Phonebook</h2>
+      <h1>Phonebook</h1>
+
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
 
       <h3>Add a new</h3>
       <PersonForm addPerson={addPerson} newName={newName} handleNameChange={handleNameChange}
         newNumber={newNumber} handleNumberChange={handleNumberChange} />
+
+      <Notification message={errorMessage} />
 
       <h3>Numbers</h3>
       <PersonList personsToShow={personsToShow} deletePerson={deletePerson} />

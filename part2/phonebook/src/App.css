@@ -23,8 +23,23 @@ input {
 }
 
 button {
-    margin-left: 10px;
+
     padding: 2px 5px;
     background-color: cadetblue;
     color: white;
+}
+
+p>button {
+    margin-left: 10px;
+}
+
+.error {
+    color: red;
+    background: rgb(255, 255, 255);
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
