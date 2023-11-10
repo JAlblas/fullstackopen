@@ -15,6 +15,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
+  const [succesMessage, setSuccessMessage] = useState(null)
 
   useEffect(() => {
     personService.getAll()
@@ -55,6 +56,13 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
+
+          setSuccessMessage(
+            `${newName} is saved.`
+          )
+          setTimeout(() => {
+            setSuccessMessage(null)
+          }, 5000)
         })
         .catch(error => {
           setErrorMessage(
@@ -137,7 +145,7 @@ const App = () => {
       <PersonForm addPerson={addPerson} newName={newName} handleNameChange={handleNameChange}
         newNumber={newNumber} handleNumberChange={handleNumberChange} />
 
-      <Notification message={errorMessage} />
+      <Notification successMessage={succesMessage} errorMessage={errorMessage} />
 
       <h3>Numbers</h3>
       <PersonList personsToShow={personsToShow} deletePerson={deletePerson} />
