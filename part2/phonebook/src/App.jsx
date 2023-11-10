@@ -54,8 +54,6 @@ const App = () => {
       personService.create(personObject)
         .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
-          setNewName('')
-          setNewNumber('')
 
           setSuccessMessage(
             `${newName} is saved.`
@@ -63,6 +61,10 @@ const App = () => {
           setTimeout(() => {
             setSuccessMessage(null)
           }, 5000)
+
+          setNewName('')
+          setNewNumber('')
+
         })
         .catch(error => {
           setErrorMessage(
@@ -87,6 +89,13 @@ const App = () => {
         setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
         setNewName('');
         setNewNumber('');
+
+        setSuccessMessage(
+          `${newName} is updated.`
+        )
+        setTimeout(() => {
+          setSuccessMessage(null)
+        }, 5000)
       })
       .catch(error => {
         setErrorMessage(
@@ -105,7 +114,15 @@ const App = () => {
     if (confirm(`Are you sure you want to remove ${person.name}?`)) {
       personService.remove(id)
         .then(returnedPerson => {
+          console.log(returnedPerson)
           setPersons(persons.filter((person) => person.id !== id))
+
+          setSuccessMessage(
+            `${person.name} is deleted.`
+          )
+          setTimeout(() => {
+            setSuccessMessage(null)
+          }, 5000)
         })
         .catch(error => {
           setErrorMessage(
