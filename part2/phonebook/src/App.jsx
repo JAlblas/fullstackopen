@@ -23,7 +23,7 @@ const App = () => {
       })
       .catch(error => {
         setErrorMessage(
-          `Notes can not be fetched`
+          `Persons can not be fetched`
         )
         setTimeout(() => {
           setErrorMessage(null)
@@ -63,7 +63,6 @@ const App = () => {
           setTimeout(() => {
             setErrorMessage(null)
           }, 5000)
-          setNotes(notes.filter(n => n.id !== id))
         })
     }
   }
