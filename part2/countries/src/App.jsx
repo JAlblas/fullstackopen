@@ -7,8 +7,13 @@ import './App.css'
 
 const App = () => {
 
-  const [searchValue, setsearchValue] = useState('')
+  const [filter, setFilter] = useState('')
   const [countries, setCountries] = useState([])
+
+  const countriesToDisplay =
+    countries.filter((country) =>
+      country.name.common.toLowerCase().includes(filter.toLowerCase())
+    );
 
   useEffect(() => {
     axios.get('https://studies.cs.helsinki.fi/restcountries/api/all')
@@ -18,6 +23,7 @@ const App = () => {
       })
   }, [])
 
+  /*
   const onSearch = (event) => {
     event.preventDefault()
     axios.get(`https://studies.cs.helsinki.fi/restcountries/api/name/${searchValue}`)
@@ -25,21 +31,22 @@ const App = () => {
         console.log(response)
       })
   }
+  */
 
   const handleChange = (event) => {
-    setsearchValue(event.target.value)
+    setFilter(event.target.value)
   }
 
   return (
     <div>
       <h1>Countrypedia</h1>
 
-      <form onSubmit={onSearch}>
-        find countries: <input value={searchValue} onChange={handleChange} />
+      <form>
+        find countries: <input value={filter} onChange={handleChange} />
         <button type="submit">Search</button>
       </form>
 
-      <CountryList countries={countries} />
+      <CountryList countries={countriesToDisplay} />
     </div>
   )
 }
