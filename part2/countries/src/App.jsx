@@ -38,11 +38,11 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div id="container">
       <h1>Countrypedia</h1>
 
       <form>
-        find countries: <input value={filter} onChange={handleChange} />
+        find countries: <br /><input value={filter} onChange={handleChange} />
         <button type="submit">Search</button>
       </form>
 
