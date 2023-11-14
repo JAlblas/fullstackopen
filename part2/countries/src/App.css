@@ -16,9 +16,11 @@ html {
     padding: 20px;
 }
 
-.details {
+.details,
+.weather {
     background-color: #EFEFEF;
     padding: 25px;
+    margin-top: 25px;
     margin-right: 15px;
 }
 
