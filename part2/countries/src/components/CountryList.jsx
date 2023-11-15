@@ -1,11 +1,15 @@
 import CountryDetails from "./CountryDetails"
+import WeatherInfo from "./WeatherInfo"
 import Country from "./Country"
 
 const CountryList = ({ countries }) => {
     //const countryNames = countries.map(country => country.name.common)
 
     if (countries.length == 1) {
-        return <CountryDetails country={countries[0]} key={countries[0].name.common} />
+        return <div>
+            <CountryDetails country={countries[0]} key={countries[0].name.common} />
+            <WeatherInfo country={countries[0]} />
+        </div>
     } else if (countries.length <= 10) {
         return (
             <div>

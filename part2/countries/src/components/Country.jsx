@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import CountryDetails from "./CountryDetails"
+import WeatherInfo from "./WeatherInfo"
 
 const Country = ({ country }) => {
     //let showDetails = false
@@ -8,7 +9,6 @@ const Country = ({ country }) => {
 
     const toggleDetails = () => {
         setShowDetails(!showDetails)
-        console.log(showDetails)
     }
 
     return (
@@ -16,6 +16,7 @@ const Country = ({ country }) => {
             <li>{country.name.common}<button onClick={toggleDetails}>Show</button>{showDetails}</li>
 
             {showDetails ? <CountryDetails country={country} /> : null}
+            {showDetails ? <WeatherInfo country={country} /> : null}
         </div>
 
     )
