@@ -39,10 +39,20 @@ app.get('/api/persons', (request, response) => {
 })
 
 app.post('/api/persons', (request, response) => {
+
+    const body = request.body
+
+    if (!body.name || !body.number) {
+        return response.status(400).json({
+            error: 'name or number missing'
+        })
+    }
+
     person = request.body
     person.id = Math.floor(Math.random() * 100000)
     persons = persons.concat(person)
     response.json(person)
+
 })
 
 app.get('/api/persons/:id', (request, response) => {
