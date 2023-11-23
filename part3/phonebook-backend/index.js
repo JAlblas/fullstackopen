@@ -40,19 +40,24 @@ app.get('/api/persons', (request, response) => {
 
 app.post('/api/persons', (request, response) => {
 
-    const body = request.body
+    const newPerson = request.body
 
-    if (!body.name || !body.number) {
+    if (!newPerson.name || !newPerson.number) {
         return response.status(400).json({
             error: 'name or number missing'
         })
     }
 
-    person = request.body
-    person.id = Math.floor(Math.random() * 100000)
-    persons = persons.concat(person)
-    response.json(person)
-
+    const userExists = persons.some(person => person.name === newPerson.name);
+    if (userExists) {
+        return response.status(400).json({
+            error: 'User already exists in phonebook'
+        })
+    } else {
+        newPerson.id = Math.floor(Math.random() * 100000)
+        persons = persons.concat(newPerson)
+        response.json(newPerson)
+    }
 })
 
 app.get('/api/persons/:id', (request, response) => {
