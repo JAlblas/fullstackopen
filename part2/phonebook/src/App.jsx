@@ -99,7 +99,7 @@ const App = () => {
       })
       .catch(error => {
         setErrorMessage(
-          `The person '${person.name}' does not exist on the server`
+          `The person '${person.name}' is not updated due to some error.`
         )
         setTimeout(() => {
           setErrorMessage(null)
