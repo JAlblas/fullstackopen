@@ -1,6 +1,6 @@
-GET http://localhost:3001/api/persons
+GET https://phonebook-part3-backend.onrender.com/api/persons
 ####
-POST http://localhost:3001/api/persons
+POST https://phonebook-part3-backend.onrender.com/api/persons
 Content-Type: application/json
 
 {
@@ -9,4 +9,4 @@ Content-Type: application/json
 }
 
 ####
-DELETE http://localhost:3001/api/persons/3
+DELETE https://phonebook-part3-backend.onrender.com/api/persons/3
